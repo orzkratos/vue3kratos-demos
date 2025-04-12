@@ -13,6 +13,9 @@ ifeq ($(GOHOSTOS), windows)
 else
 	INTERNAL_PROTO_FILES=$(shell find internal -name *.proto)
 	API_PROTO_FILES=$(shell find api -name *.proto)
+	#这就是新增的内容
+	#想把第三方的这些也收集下来，再使用命令生成第三方包（因为自动生成好像不是很好使）
+	THIRD_PARTY_GOOGLE_API_PROTO_FILES=$(shell find third_party/google/api -name *.proto)
 endif
 
 .PHONY: init
@@ -61,6 +64,28 @@ all:
 	make api;
 	make config;
 	make generate;
+
+# 这就是新增的内容
+# npm install -g @protobuf-ts/plugin
+web_api_grpc_ts:
+	mkdir -p ./bin/web_api_grpc_ts.out
+	protoc \
+	--plugin=protoc-gen-ts=/Users/admin/.nvm/versions/node/v22.11.0/bin/protoc-gen-ts \
+	--ts_out=./bin/web_api_grpc_ts.out \
+	--proto_path=./api \
+	--proto_path=./third_party \
+	$(API_PROTO_FILES)
+
+	protoc \
+	--plugin=protoc-gen-ts=/Users/admin/.nvm/versions/node/v22.11.0/bin/protoc-gen-ts \
+	--ts_out=./bin/web_api_grpc_ts.out \
+	--proto_path=./third_party \
+	$(THIRD_PARTY_GOOGLE_API_PROTO_FILES)
+
+# 这就是新增的内容
+# go install github.com/orzkratos/vue3kratos/cmd/vue3orzkratos@latest
+web_api_grpt_ts:
+	vue3orzkratos gen-grpc-via-http-in-root --grpc_ts_root=./bin/web_api_grpc_ts.out
 
 # show help
 help:
