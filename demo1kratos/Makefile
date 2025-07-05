@@ -69,15 +69,17 @@ all:
 # npm install -g @protobuf-ts/plugin
 web_api_grpc_ts:
 	mkdir -p ./bin/web_api_grpc_ts.out
+	PROTOC_GEN_TS=$$(which protoc-gen-ts) && \
 	protoc \
-	--plugin=protoc-gen-ts=/Users/admin/.nvm/versions/node/v22.11.0/bin/protoc-gen-ts \
+	--plugin=protoc-gen-ts=$$PROTOC_GEN_TS \
 	--ts_out=./bin/web_api_grpc_ts.out \
 	--proto_path=./api \
 	--proto_path=./third_party \
 	$(API_PROTO_FILES)
 
+	PROTOC_GEN_TS=$$(which protoc-gen-ts) && \
 	protoc \
-	--plugin=protoc-gen-ts=/Users/admin/.nvm/versions/node/v22.11.0/bin/protoc-gen-ts \
+	--plugin=protoc-gen-ts=$$PROTOC_GEN_TS \
 	--ts_out=./bin/web_api_grpc_ts.out \
 	--proto_path=./third_party \
 	$(THIRD_PARTY_GOOGLE_API_PROTO_FILES)
@@ -85,7 +87,11 @@ web_api_grpc_ts:
 # 这就是新增的内容
 # go install github.com/orzkratos/vue3kratos/cmd/vue3orzkratos@latest
 web_api_grpt_ts:
-	vue3orzkratos gen-grpc-via-http-in-root --grpc_ts_root=./bin/web_api_grpc_ts.out
+	vue3orzkratos gen-grpc-via-http-in-root --grpc-ts-root=./bin/web_api_grpc_ts.out
+
+# 这就是新增的内容
+web_api_cleanup:
+	rm -rf ./bin/web_api_grpc_ts.out
 
 # show help
 help:
