@@ -6,15 +6,15 @@ require (
 	github.com/go-kratos/kratos/v2 v2.9.1
 	github.com/google/wire v0.7.0
 	github.com/orzkratos/errkratos v0.0.31
-	github.com/orzkratos/vue3kratos v0.0.20
+	github.com/orzkratos/vue3kratos v0.0.21
 	github.com/yyle88/done v1.0.27
 	github.com/yyle88/eroticgo v0.0.5
 	github.com/yyle88/must v0.0.26
-	github.com/yyle88/osexec v0.0.32
+	github.com/yyle88/osexec v0.0.33
 	github.com/yyle88/osexistpath v0.0.18
 	github.com/yyle88/rese v0.0.11
 	github.com/yyle88/runpath v1.0.24
-	google.golang.org/genproto/googleapis/api v0.0.0-20251029180050-ab9386a59fda
+	google.golang.org/genproto/googleapis/api v0.0.0-20251111163417-95abcf5c77ba
 	google.golang.org/grpc v1.76.0
 	google.golang.org/protobuf v1.36.10
 )
@@ -30,10 +30,10 @@ require (
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/yyle88/erero v1.0.24 // indirect
-	github.com/yyle88/mutexmap v1.0.14 // indirect
+	github.com/yyle88/mutexmap v1.0.15 // indirect
 	github.com/yyle88/printgo v1.0.6 // indirect
-	github.com/yyle88/sure v0.0.40 // indirect
-	github.com/yyle88/syntaxgo v0.0.53 // indirect
+	github.com/yyle88/sure v0.0.42 // indirect
+	github.com/yyle88/syntaxgo v0.0.54 // indirect
 	github.com/yyle88/tern v0.0.9 // indirect
 	github.com/yyle88/zaplog v0.0.27 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
@@ -42,10 +42,11 @@ require (
 	go.opentelemetry.io/otel/trace v1.38.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect
-	golang.org/x/net v0.46.0 // indirect
-	golang.org/x/sync v0.17.0 // indirect
-	golang.org/x/sys v0.37.0 // indirect
-	golang.org/x/text v0.30.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20251029180050-ab9386a59fda // indirect
+	golang.org/x/mod v0.30.0 // indirect
+	golang.org/x/net v0.47.0 // indirect
+	golang.org/x/sync v0.18.0 // indirect
+	golang.org/x/sys v0.38.0 // indirect
+	golang.org/x/text v0.31.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20251111163417-95abcf5c77ba // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

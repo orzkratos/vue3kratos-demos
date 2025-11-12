@@ -3,10 +3,158 @@
 
 openapi: 3.0.3
 info:
-    title: Greeter API
-    description: The greeting service definition.
+    title: ""
     version: 0.0.1
 paths:
+    /api/boom/db-error:
+        get:
+            tags:
+                - Rpcboom
+            description: |-
+                BoomDbError returns DB_ERROR error (500)
+                 BoomDbError 返回 DB_ERROR 错误 (500)
+            operationId: Rpcboom_BoomDbError
+            responses:
+                "200":
+                    description: OK
+                    content: {}
+    /api/boom/not-found:
+        get:
+            tags:
+                - Rpcboom
+            description: |-
+                BoomNotFound returns USER_NOT_FOUND error (404)
+                 BoomNotFound 返回 USER_NOT_FOUND 错误 (404)
+            operationId: Rpcboom_BoomNotFound
+            responses:
+                "200":
+                    description: OK
+                    content: {}
+    /api/boom/tx-error:
+        get:
+            tags:
+                - Rpcboom
+            description: |-
+                BoomTxError returns TX_ERROR error (500)
+                 BoomTxError 返回 TX_ERROR 错误 (500)
+            operationId: Rpcboom_BoomTxError
+            responses:
+                "200":
+                    description: OK
+                    content: {}
+    /api/boom/unknown:
+        get:
+            tags:
+                - Rpcboom
+            description: |-
+                BoomUnknown returns UNKNOWN error (500)
+                 BoomUnknown 返回 UNKNOWN 错误 (500)
+            operationId: Rpcboom_BoomUnknown
+            responses:
+                "200":
+                    description: OK
+                    content: {}
+    /api/boom/vague:
+        get:
+            tags:
+                - Rpcboom
+            description: |-
+                BoomVague returns GREETER_UNSPECIFIED error (500)
+                 BoomVague 返回 GREETER_UNSPECIFIED 错误 (500)
+            operationId: Rpcboom_BoomVague
+            responses:
+                "200":
+                    description: OK
+                    content: {}
+    /api/demo/create-rpc-demo:
+        post:
+            tags:
+                - Rpcdemo
+            operationId: Rpcdemo_CreateRpcDemo
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/api.rpcdemo.CreateRpcDemoRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.rpcdemo.CreateRpcDemoReply'
+    /api/demo/create-rpc-demo/{code}:
+        delete:
+            tags:
+                - Rpcdemo
+            operationId: Rpcdemo_DeleteRpcDemo
+            parameters:
+                - name: code
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.rpcdemo.DeleteRpcDemoReply'
+    /api/demo/select-rpc-demo:
+        get:
+            tags:
+                - Rpcdemo
+            operationId: Rpcdemo_SelectRpcDemo
+            parameters:
+                - name: type
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.rpcdemo.SelectRpcDemoReply'
+    /api/demo/update-rpc-demo:
+        put:
+            tags:
+                - Rpcdemo
+            operationId: Rpcdemo_UpdateRpcDemo
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/api.rpcdemo.UpdateRpcDemoRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/api.rpcdemo.UpdateRpcDemoReply'
+    /api/service/ping:
+        get:
+            tags:
+                - Rpcping
+            operationId: Rpcping_Ping
+            parameters:
+                - name: value
+                  in: query
+                  description: The string value.
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                type: string
     /helloworld/{name}:
         get:
             tags:
@@ -28,6 +176,55 @@ paths:
                                 $ref: '#/components/schemas/helloworld.v1.HelloReply'
 components:
     schemas:
+        api.rpcdemo.CreateRpcDemoReply:
+            type: object
+            properties:
+                code:
+                    type: string
+        api.rpcdemo.CreateRpcDemoRequest:
+            type: object
+            properties:
+                code:
+                    type: string
+                name:
+                    type: string
+                type:
+                    type: string
+        api.rpcdemo.DeleteRpcDemoReply:
+            type: object
+            properties:
+                code:
+                    type: string
+        api.rpcdemo.SelectRpcDemoReply:
+            type: object
+            properties:
+                demos:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/api.rpcdemo.SelectRpcDemoReply_Item'
+        api.rpcdemo.SelectRpcDemoReply_Item:
+            type: object
+            properties:
+                code:
+                    type: string
+                name:
+                    type: string
+                type:
+                    type: string
+        api.rpcdemo.UpdateRpcDemoReply:
+            type: object
+            properties:
+                code:
+                    type: string
+                name:
+                    type: string
+        api.rpcdemo.UpdateRpcDemoRequest:
+            type: object
+            properties:
+                code:
+                    type: string
+                name:
+                    type: string
         helloworld.v1.HelloReply:
             type: object
             properties:
@@ -36,3 +233,10 @@ components:
             description: The response message containing the greetings
 tags:
     - name: Greeter
+      description: The greeting service definition.
+    - name: Rpcboom
+      description: |-
+        Rpcboom service defines methods that return different error types
+         Rpcboom 服务定义返回不同错误类型的方法
+    - name: Rpcdemo
+    - name: Rpcping

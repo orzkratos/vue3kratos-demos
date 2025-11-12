@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package api.rpcboom;
+
+import "google/api/annotations.proto";
+import "google/protobuf/descriptor.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/orzkratos/demokratos/demo1kratos/api/rpcboom;rpcboom";
+option java_multiple_files = true;
+option java_package = "api.rpcboom";
+
+// Rpcboom service defines methods that return different error types
+// Rpcboom 服务定义返回不同错误类型的方法
+service Rpcboom {
+  // BoomUnknown returns UNKNOWN error (500)
+  // BoomUnknown 返回 UNKNOWN 错误 (500)
+  rpc BoomUnknown(google.protobuf.Empty) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      get: "/api/boom/unknown"
+    };
+  }
+
+  // BoomNotFound returns USER_NOT_FOUND error (404)
+  // BoomNotFound 返回 USER_NOT_FOUND 错误 (404)
+  rpc BoomNotFound(google.protobuf.Empty) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      get: "/api/boom/not-found"
+    };
+  }
+
+  // BoomVague returns GREETER_UNSPECIFIED error (500)
+  // BoomVague 返回 GREETER_UNSPECIFIED 错误 (500)
+  rpc BoomVague(google.protobuf.Empty) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      get: "/api/boom/vague"
+    };
+  }
+
+  // BoomTxError returns TX_ERROR error (500)
+  // BoomTxError 返回 TX_ERROR 错误 (500)
+  rpc BoomTxError(google.protobuf.Empty) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      get: "/api/boom/tx-error"
+    };
+  }
+
+  // BoomDbError returns DB_ERROR error (500)
+  // BoomDbError 返回 DB_ERROR 错误 (500)
+  rpc BoomDbError(google.protobuf.Empty) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      get: "/api/boom/db-error"
+    };
+  }
+}
+

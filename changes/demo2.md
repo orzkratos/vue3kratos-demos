@@ -33,7 +33,7 @@ Code differences compared to source project demokratos.
  		   $(API_PROTO_FILES)
  
  .PHONY: build
-@@ -72,6 +75,34 @@
+@@ -74,6 +77,34 @@
  	make errors;
  	make config;
  	make generate;

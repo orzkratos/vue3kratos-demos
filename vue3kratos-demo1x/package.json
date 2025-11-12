@@ -1,0 +1,35 @@
+{
+  "name": "vue3kratos-demo1x",
+  "version": "1.0.0",
+  "description": "Vue3 Kratos Demo - TypeScript gRPC-to-HTTP client demonstrations",
+  "type": "module",
+  "scripts": {
+    "demo": "echo 'vue3-kratos' && exit 0",
+    "demo:wise": "tsx src/demo-wise.ts",
+    "demo:epic": "tsx src/demo-epic.ts",
+    "demo:ping": "tsx src/demo-ping.ts",
+    "demo:crud": "tsx src/demo-crud.ts",
+    "demo:boom": "tsx src/demo-boom.ts"
+  },
+  "keywords": [
+    "vue3",
+    "kratos",
+    "grpc",
+    "typescript",
+    "protobuf",
+    "grpc-web",
+    "http-client",
+    "rpc"
+  ],
+  "author": "lele",
+  "license": "MIT",
+  "dependencies": {
+    "@protobuf-ts/grpcweb-transport": "^2.11.1",
+    "@protobuf-ts/runtime-rpc": "^2.11.1",
+    "@yyle88/grpt": "^0.0.11"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}
