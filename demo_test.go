@@ -426,7 +426,7 @@ func TestGenerateXChanges(t *testing.T) {
 
 		subRoot := filepath.Join(root, name)
 		t.Log(subRoot)
-		treeOutput := rese.A1(osexec.ExecInPath(subRoot, "tree", "--noreport", "--charset=ascii"))
+		treeOutput := rese.A1(osexec.ExecInPath(subRoot, "tree", "--noreport", "--charset=ascii", "-I", "node_modules|.git|bin|.idea|.vscode"))
 		t.Log(string(treeOutput))
 
 		ptx.Println("```")

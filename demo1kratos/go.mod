@@ -7,7 +7,7 @@ require (
 	github.com/google/wire v0.7.0
 	github.com/orzkratos/errkratos v0.0.31
 	github.com/orzkratos/vue3kratos v0.0.21
-	github.com/yyle88/done v1.0.27
+	github.com/yyle88/done v1.0.28
 	github.com/yyle88/eroticgo v0.0.5
 	github.com/yyle88/must v0.0.26
 	github.com/yyle88/osexec v0.0.33
